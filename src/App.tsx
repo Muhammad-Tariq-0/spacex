@@ -1,16 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import './App.css';
-import { MissionList } from './components/Mission/MissionList';
-import { MissionDetails } from './components/MissionInfo/MissionDetails';
+import Home from './Home';
 function App() {
-  const [id, setId] = React.useState(42);
-  const handleIdChange = React.useCallback(newId => {
-    setId(newId);
-  }, []);
   return (
-    <div>
-     <MissionList handleIdChange={handleIdChange}/>
-     <MissionDetails id={id}/>
+    <div className="main">
+      <Home/>
     </div>
   );
 }
