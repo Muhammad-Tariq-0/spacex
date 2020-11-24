@@ -13,7 +13,6 @@ export default function MissionList({ handleIdChange }: MyProps) {
   if (loading) return <img src={unnamed} className="load" width={100} height={100} alt={"no pic"}/>;
   if (error || !data) return <h1>error</h1>;
   console.log(data);
-
   return (
     <div className="bgmlist">
     <div className="cardsize">
@@ -26,7 +25,19 @@ export default function MissionList({ handleIdChange }: MyProps) {
     <Card.Text>
       {launchObj?.details}
     </Card.Text>
-    <Link to="/missions/flight"><Button variant="primary" onClick={() => handleIdChange(launchObj?.flight_number!)}>Show Details</Button></Link>  
+       <span>{ launchObj?.launch_success === true ? 
+      <div>
+        <h5 className="launchsucess">Mission Passed</h5>
+        <hr/>
+       <Link to="/missions/flight"><Button variant="primary" onClick={() => handleIdChange(launchObj?.flight_number!)}>View Images</Button></Link>  
+       </div>
+       
+       : <div>
+         <hr/>
+         <h5 className="launchfailed">Mission Failed</h5>
+         </div>
+         }</span>
+
   </Card.Body>
   </Card>
         )})}

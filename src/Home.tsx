@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import MissionList from './components/Mission/MissionList';
 import MissionDetails from './components/MissionInfo/MissionDetails';
-import {Navbar,Nav} from 'react-bootstrap'
+import {Navbar,Nav,Button} from 'react-bootstrap'
 import logo1 from './space-img/logo1.png'
 import logo from './space-img/logo.png'
 import ReactTypingEffect from 'react-typing-effect';
@@ -18,17 +18,17 @@ export default function Home() {
       <BrowserRouter> 
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
   <Navbar.Brand>
-    <img src={logo1} width={30} height={30} alt="Loading..."/>
-    <img src={logo} width={100} height={30} alt="Loading..."/>  
+    <img src={logo1} width={40} height={40} alt="Loading..."/>
+    <img src={logo} width={100} height={40} alt="Loading..."/>  
   </Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
     <Nav >
       <Nav.Link >
-        <Link to="/">Home</Link>
+        <Link to="/"><Button variant="light">Home</Button></Link>
         </Nav.Link>
       <Nav.Link >
-      <Link to="/missions">Missions</Link>
+      <Link to="/missions"><Button variant="light">Missions</Button></Link>
       </Nav.Link>
     </Nav>
   </Navbar.Collapse>
