@@ -1,56 +1,52 @@
 import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import MissionList from './components/Mission/MissionList';
 import MissionDetails from './components/MissionInfo/MissionDetails';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }),
-);
+import {Navbar,Nav} from 'react-bootstrap'
+import logo1 from './space-img/logo1.png'
+import logo from './space-img/logo.png'
+import ReactTypingEffect from 'react-typing-effect';
 
 export default function Home() {
-  const classes = useStyles();
   const [id, setId] = React.useState(0);
   const handleIdChange = React.useCallback(newId => {
     setId(newId);
   }, []);
 
   return (
-    <div className={classes.root}>
-      <BrowserRouter>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              News
-          </Typography>
-            <Link to="/"><Button color="inherit">Home</Button></Link>
-            <Link to="/missions"><Button color="inherit">Missions</Button></Link>
-          </Toolbar>
-        </AppBar>
+    <div className="main">
+      <BrowserRouter> 
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+  <Navbar.Brand>
+    <img src={logo1} width={30} height={30} alt="Loading..."/>
+    <img src={logo} width={100} height={30} alt="Loading..."/>  
+  </Navbar.Brand>
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+  <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
+    <Nav >
+      <Nav.Link >
+        <Link to="/">Home</Link>
+        </Nav.Link>
+      <Nav.Link >
+      <Link to="/missions">Missions</Link>
+      </Nav.Link>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
         <Routes>
           <Route path='/missions' element={<MissionList handleIdChange={handleIdChange}/>} />
           <Route path='/missions/flight' element={<MissionDetails id={id}/>} />
         </Routes>
       </BrowserRouter>
+      <div className="txt">
+<h5 className="clr">
+  <ReactTypingEffect
+  text="“SpaceX is in the process of creating the greatest environmental catastrophe I have ever witnessed.”"
+  />
+  </h5>
+</div>
     </div>
   );
 }
+
+

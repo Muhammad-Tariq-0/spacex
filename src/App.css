@@ -1,18 +1,38 @@
 .main{
-    background-image: url(./space-img/spacew2.jpg);
-    background-size: 100% 100%;
+    background-image: url(./space-img/back1.png);
+    background-repeat: no-repeat;
+    background-size: 30% 100%;
     max-width: 1350px ;
     height: 700px;
-}
-/* .homeclr{
     background-color: black;
+}
+.cardsize{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+}
+.h{
+    margin-top: 20px;
+}
+
+.bgmlist{
+background-color: black;
+text-align: center;
 }
 .clr{
     color: white;
 }
-
-.nav{
-    max-width: 1350px;
-    height:80px ;
-    background-color: black;
-} */
+.image{
+margin-top: 20px;
+}
+.txt{
+   text-align: center;
+   margin-top: 250px;
+  margin-left: 35%;
+  max-width: 50%;
+}
+.load{
+    text-align: center;
+   margin-top: 250px;
+  margin-left: 50%;
+}

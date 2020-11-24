@@ -1,49 +1,41 @@
+
 import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import {  useMissionInfoQuery } from "../../generated/graphql";
 import {Link} from 'react-router-dom'
+import {Card,Button} from 'react-bootstrap'
+import unnamed from '../../space-img/unnamed.gif'
 interface MyProps {
   handleIdChange: (newId: number) => void;
 }
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-      backgroundColor: 'black',
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  }),
-);
 
 export default function MissionList({ handleIdChange }: MyProps) {
-  const classes = useStyles();
   let { loading, error, data } = useMissionInfoQuery();
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <img src={unnamed} className="load" width={100} height={100} alt={"no pic"}/>;
   if (error || !data) return <h1>error</h1>;
   console.log(data);
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-
-          {data.launches?.map((launchObj, ind) => {
+    <div className="bgmlist">
+    <div className="cardsize">
+      {data.launches?.map((launchObj, ind) => {
         return (
-          <Grid item xs={12} sm={8}>
-          <Paper className={classes.paper}>
-              {launchObj?.mission_name}
-            <br/>
-          <Link to="/missions/flight"><button onClick={() => handleIdChange(launchObj?.flight_number!)}>Show Details</button></Link>  
-            </Paper>
-        </Grid>
-        );
-      })}
-      </Grid>
+          <Card className="h">
+  <Card.Header>{launchObj?.launch_year}</Card.Header>
+  <Card.Body>
+    <Card.Title>{launchObj?.mission_name}</Card.Title>
+    <Card.Text>
+      {launchObj?.details}
+    </Card.Text>
+    <Link to="/missions/flight"><Button variant="primary" onClick={() => handleIdChange(launchObj?.flight_number!)}>Show Details</Button></Link>  
+  </Card.Body>
+  </Card>
+        )})}
+  
+    </div>
     </div>
   );
 }
+
+
+
+

@@ -13,5 +13,9 @@ query LaunchMissionInfo ($id: String!) {
         rocket_name
         rocket_type
       }
+      links {
+        flickr_images
+        video_link
+      }
     }
   }`;
