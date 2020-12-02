@@ -1,9 +1,8 @@
 import React from 'react';
 import Home from './Home'
 import './App.css';
-
 function App() {
- navigator.serviceWorker.register('/sw.js');
+//  navigator.serviceWorker.register('/sw.js');
   return (
     <div>
       <Home/>

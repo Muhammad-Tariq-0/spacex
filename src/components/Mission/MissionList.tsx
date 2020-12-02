@@ -18,7 +18,7 @@ export default function MissionList({ handleIdChange }: MyProps) {
     <div className="cardsize">
       {data.launches?.map((launchObj, ind) => {
         return (
-          <Card className="h">
+          <Card className="h" data-aos="fade-up">
   <Card.Header>{launchObj?.launch_year}</Card.Header>
   <Card.Body>
     <Card.Title>{launchObj?.mission_name}</Card.Title>
