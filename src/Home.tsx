@@ -36,10 +36,7 @@ export default function Home() {
     </Nav>
   </Navbar.Collapse>
 </Navbar>
-        {/* <Routes>
-          <Route path='/missions' element={<MissionListContainer handleIdChange={handleIdChange}/>} />
-          <Route path='/missions/flight' element={<MissionDetails id={id}/>} />
-        </Routes> */}
+        
         <MissionListContainer handleIdChange={handleIdChange}/>
         <MissionDetails id={id}/>
       </BrowserRouter>
