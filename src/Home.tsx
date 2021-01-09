@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
-import MissionList from './components/Mission/MissionList';
 import MissionDetails from './components/MissionInfo/MissionDetails';
 import {Navbar,Nav,Button} from 'react-bootstrap'
 import logo1 from './space-img/logo1.png'
@@ -8,6 +7,7 @@ import logo from './space-img/logo.png'
 import ReactTypingEffect from 'react-typing-effect';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import MissionListContainer from './components/Mission';
 export default function Home() {
   const [id, setId] = React.useState(0);
   const handleIdChange = React.useCallback(newId => {
@@ -37,7 +37,7 @@ export default function Home() {
   </Navbar.Collapse>
 </Navbar>
         <Routes>
-          <Route path='/missions' element={<MissionList handleIdChange={handleIdChange}/>} />
+          <Route path='/missions' element={<MissionListContainer handleIdChange={handleIdChange}/>} />
           <Route path='/missions/flight' element={<MissionDetails id={id}/>} />
         </Routes>
       </BrowserRouter>

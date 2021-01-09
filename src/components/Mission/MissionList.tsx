@@ -1,18 +1,18 @@
 
 import React from 'react';
-import { useMissionInfoQuery } from "../../generated/graphql";
+import { MissionInfoQuery} from '../../generated/graphql';
 import { Link } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
-import unnamed from '../../space-img/unnamed.gif'
-interface MyProps {
+export interface MyProps {
   handleIdChange: (newId: number) => void;
 }
+interface Props extends MyProps {
+  data: MissionInfoQuery;
+}
 
-export default function MissionList({ handleIdChange }: MyProps) {
-  let { loading, error, data } = useMissionInfoQuery();
-  if (loading) return <img src={unnamed} className="load" width={100} height={100} alt={"no pic"} />;
-  if (error || !data) return <h5 style={{ color: "white", marginTop: "30px", textAlign: "center" }}>Error in Fetching Data</h5>;
-  console.log(data);
+
+const MissionList:React.FC<Props> = ({ data,handleIdChange }) => {
+
   return (
     <div className="bgmlist">
       <div className="cardsize">
@@ -47,6 +47,8 @@ export default function MissionList({ handleIdChange }: MyProps) {
     </div>
   );
 }
+
+export default MissionList;
 
 
 
